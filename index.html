@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta name="google-site-verification" content="SYvKdIXaxDtgbYtGfPwiodyF6n5t9muiLi-z_GppCsY" />
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE HUNS | #1 Clan Agar.io & Macro Sharkmod</title>
@@ -12,7 +14,9 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pamuk2006.github.io/TheHunsClan.io">
     <meta property="og:image" content="Ferhat.png"> 
-    <meta name="theme-color" content="#00ffff"> <script type="application/ld+json">
+    <meta name="theme-color" content="#00ffff">
+
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SportsTeam",
@@ -22,11 +26,11 @@
       "url": "https://pamuk2006.github.io/TheHunsClan.io"
     }
     </script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* --- COULEURS NÉON --- */
-            --accent-color: #00ffff; /* Cyan Néon */
+            --accent-color: #00ffff;
             --neon-glow: 0 0 5px var(--accent-color), 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
             --dark-bg: rgba(10, 10, 12, 0.9);
             --panel-bg: rgba(0, 0, 0, 0.85);
@@ -43,9 +47,6 @@
             position: relative;
         }
 
-        /* =========================================
-           ÉCRAN DE CHARGEMENT ESPORT
-           ========================================= */
         #loader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -71,12 +72,8 @@
             100% { transform: scale(1.05); text-shadow: var(--neon-glow); }
         }
 
-        .loader-hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
+        .loader-hidden { opacity: 0; visibility: hidden; }
 
-        /* --- ANIMATION DES SKINS AGAR.IO EN FOND --- */
         .bg-shapes {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -109,7 +106,6 @@
             100% { transform: translateY(0px) translateX(0px) scale(1) rotate(0deg); }
         }
 
-        /* --- BARRE DE NAVIGATION SUPÉRIEURE --- */
         .top-nav {
             position: fixed;
             top: 20px;
@@ -149,11 +145,7 @@
 
         .nav-item:hover:not(.active) { color: #fff; text-shadow: 0 0 5px var(--accent-color); }
 
-        /* --- FLÈCHES ANIMÉES MACRO --- */
-        .macro-link {
-            position: relative;
-            overflow: visible;
-        }
+        .macro-link { position: relative; overflow: visible; }
 
         .arrows-container {
             position: absolute;
@@ -182,7 +174,6 @@
             100% { transform: translateY(-5px) rotate(var(--rot)); }
         }
 
-        /* --- LOGO À GAUCHE (Transformé en H1 pour le SEO) --- */
         .brand-logo {
             position: fixed;
             top: 20px;
@@ -200,10 +191,9 @@
             color: #fff;
             text-shadow: 0 0 5px var(--accent-color);
             backdrop-filter: blur(5px);
-            margin: 0; 
+            margin: 0;
         }
 
-        /* --- CONTENU CENTRAL --- */
         .center-wrapper {
             position: absolute;
             top: 55%; 
@@ -282,7 +272,6 @@
         
         .stat-text { font-size: 0.8rem; letter-spacing: 2px; color: #ccc; font-weight: 700; }
 
-        /* --- MODAL / OVERLAY --- */
         .overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -337,22 +326,20 @@
             box-shadow: 0 0 10px var(--accent-color);
         }
 
-        .close-modal:hover { 
-            background: #fff; 
-            box-shadow: 0 0 20px #fff; 
-        }
+        .close-modal:hover { background: #fff; box-shadow: 0 0 20px #fff; }
 
-        /* --- BOUTONS SOCIAUX (SUB TO UNLOCK) --- */
         .social-lock-btn {
             display: flex; align-items: center; justify-content: center; gap: 15px;
             background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(0, 255, 255, 0.3);
             padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: 0.3s; cursor: pointer;
         }
+        
         .social-lock-btn:hover { 
             border-color: var(--accent-color); 
             box-shadow: 0 0 10px var(--accent-color);
             text-shadow: 0 0 5px var(--accent-color);
         }
+
         .social-lock-btn.clicked { background: rgba(46, 204, 113, 0.15); border-color: #2ecc71; color: #2ecc71; box-shadow: 0 0 10px #2ecc71; text-shadow: none; }
 
         .download-btn {
@@ -361,18 +348,22 @@
             box-shadow: inset 0 0 10px rgba(0,255,255,0.2);
             text-shadow: 0 0 5px var(--accent-color);
         }
+        
         .download-btn:hover { background: var(--accent-color); color: #000; transform: scale(1.05); box-shadow: var(--neon-glow); text-shadow: none; }
 
-        /* --- CARROUSEL --- */
         .carousel-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; width: 100%; }
+        
         .nav-arrow { background: transparent; border: none; color: var(--accent-color); font-size: 2.5rem; cursor: pointer; transition: 0.2s; padding: 10px; text-shadow: 0 0 10px var(--accent-color); }
+        
         .nav-arrow:hover { transform: scale(1.2); color: #fff; text-shadow: 0 0 15px #fff; }
+        
         .member-card { background: #000; border: 1px solid var(--accent-color); border-radius: 15px; padding: 20px; margin-top: 20px; flex-grow: 1; max-width: 320px; box-shadow: 0 0 15px rgba(0,255,255,0.1); }
         
-        /* Correction de la taille de l'image ici */
+        /* Style corrigé pour les photos */
         .member-photo { width: 100%; max-width: 250px; height: 150px; object-fit: contain; background: #1a1a1a; border-radius: 10px; border: 1px solid rgba(0, 255, 255, 0.3); }
         
         .chef-title { font-family: 'Georgia', serif; color: var(--accent-color); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 3px; margin-top: 15px; font-weight: 900; text-shadow: 0 0 5px var(--accent-color); }
+        
         .member-count { margin-top: 15px; font-size: 0.8rem; color: #aaa; font-weight: 700; }
 
         @media (max-width: 768px) {
@@ -407,7 +398,6 @@
 
     <nav class="top-nav">
         <a href="#" class="nav-item active">Intro</a>
-        
         <a href="javascript:void(0)" onclick="toggleMacro()" class="nav-item macro-link">
             Macro
             <div class="arrows-container">
@@ -416,7 +406,6 @@
                 <i class="fa-solid fa-arrow-up arrow-icon arrow-right"></i>
             </div>
         </a>
-
         <a href="javascript:void(0)" onclick="toggleModal()" class="nav-item">À propos</a>
         <a href="javascript:void(0)" onclick="toggleMembres()" class="nav-item">Membres</a>
     </nav>
@@ -427,7 +416,7 @@
         </a>
         <div class="stats-container">
             <div class="stat-box">
-                <span class="stat-number" id="discordCount">1183+</span>
+                <span class="stat-number" id="discordCount">1183</span>
                 <span class="stat-text">MEMBRES TOTAL</span>
             </div>
             <div class="stat-box">
@@ -453,7 +442,6 @@
     <div id="macroModal" class="overlay">
         <div class="modal-content">
             <h2 style="color: var(--accent-color);">MACRO SHARKMOD OFFICIELLE</h2>
-            
             <div id="lockScreen">
                 <p>Pour obtenir le lien de la Macro Sharkmod, tu dois soutenir le clan !</p>
                 <div style="display: flex; flex-direction: column; gap: 15px; margin: 25px 0;">
@@ -468,17 +456,14 @@
                     <i class="fa-solid fa-lock"></i> Clique sur les deux liens pour débloquer la vidéo.
                 </p>
             </div>
-
             <div id="hiddenMacroContent" style="display: none;">
                 <p style="color: #2ecc71; font-weight: bold;"><i class="fa-solid fa-unlock"></i> Accès débloqué !</p>
-                <p>Voici le lien pour avoir la macro Sharkmod et notre configuration privée (Éjection de masse & trick splits).</p>
-                
+                <p>Voici le lien pour avoir la macro Sharkmod et notre configuration privée (Éjection de masse + trick splits).</p>
                 <div style="margin: 20px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--accent-color);">
                     <video src="macro.mp4" width="100%" controls style="border-radius: 10px;"></video>
                 </div>
                 </a>
             </div>
-
             <button class="close-modal" onclick="toggleMacro()" style="background: var(--accent-color); color: #000; margin-top: 25px;">FERMER</button>
         </div>
     </div>
@@ -505,16 +490,12 @@
     </div>
 
     <script>
-        /* =========================================
-           GESTION DE L'ÉCRAN DE CHARGEMENT
-           ========================================= */
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loader').classList.add('loader-hidden');
             }, 1500);
         });
 
-        /* --- MODALS --- */
         function toggleModal() { document.getElementById('infoModal').classList.toggle('active'); }
         function toggleMembres() { document.getElementById('membresModal').classList.toggle('active'); }
 
@@ -527,13 +508,11 @@
             macroModal.classList.toggle('active');
         }
 
-        /* --- SYSTÈME DE DÉBLOCAGE TIKTOK / INSTA --- */
         let tiktokClicked = false;
         let instaClicked = false;
 
         function checkUnlock(platform, event) {
             event.currentTarget.classList.add('clicked');
-            
             if (platform === 'tiktok') {
                 tiktokClicked = true;
                 event.currentTarget.innerHTML = '<i class="fa-solid fa-check"></i> TikTok Vérifié';
@@ -542,12 +521,10 @@
                 instaClicked = true;
                 event.currentTarget.innerHTML = '<i class="fa-solid fa-check"></i> Insta Vérifié';
             }
-
             if (tiktokClicked && instaClicked) {
                 document.getElementById('unlockMessage').style.color = '#2ecc71';
                 document.getElementById('unlockMessage').style.textShadow = '0 0 5px #2ecc71';
                 document.getElementById('unlockMessage').innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Déblocage en cours...';
-                
                 setTimeout(() => {
                     document.getElementById('lockScreen').style.display = 'none';
                     document.getElementById('hiddenMacroContent').style.display = 'block';
@@ -555,7 +532,6 @@
             }
         }
 
-        /* --- CARROUSEL DES MEMBRES --- */
         const membresDuClan = [
             { nom: "Ferhat", role: "CHEF DU CLAN", photo: "Ferhat.png" },
             { nom: "sahaj95", role: "2ND CHEF DU CLAN", photo: "sahaj95.png" },
@@ -585,7 +561,6 @@
         }
         changerMembre(0);
 
-        /* --- COMPTEUR DISCORD AUTOMATIQUE --- */
         async function fetchDiscordMembers() {
             try {
                 const response = await fetch('https://discord.com/api/v9/invites/SAFMmW2s?with_counts=true');
@@ -596,8 +571,6 @@
             } catch (error) { console.log("Erreur API Discord"); }
         }
         fetchDiscordMembers();
-
     </script>
-
 </body>
 </html>
