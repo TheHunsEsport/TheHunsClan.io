@@ -9,15 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --accent-color: #edd6bc; 
-            --dark-bg: rgba(20, 19, 17, 0.9);
-            --panel-bg: rgba(0, 0, 0, 0.75);
+            /* --- COULEURS NÉON --- */
+            --accent-color: #00ffff; /* Cyan Néon */
+            --neon-glow: 0 0 5px var(--accent-color), 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
+            --dark-bg: rgba(10, 10, 12, 0.9);
+            --panel-bg: rgba(0, 0, 0, 0.85);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: radial-gradient(circle at center, #1f1d1a 0%, #080808 100%);
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
             font-family: 'Inter', sans-serif;
             height: 100vh;
             overflow: hidden;
@@ -25,7 +27,40 @@
             position: relative;
         }
 
-        /* --- ANIMATION DES FORMES EN FOND --- */
+        /* =========================================
+           ÉCRAN DE CHARGEMENT ESPORT
+           ========================================= */
+        #loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #050505; 
+            z-index: 9999; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+
+        .loader-title {
+            font-size: 4rem;
+            font-style: italic;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 8px;
+            animation: pulse-neon 1.5s infinite alternate;
+        }
+
+        @keyframes pulse-neon {
+            0% { transform: scale(1); text-shadow: 0 0 10px var(--accent-color); }
+            100% { transform: scale(1.05); text-shadow: var(--neon-glow); }
+        }
+
+        .loader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* --- ANIMATION DES SKINS AGAR.IO EN FOND --- */
         .bg-shapes {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -37,23 +72,26 @@
         .shape {
             position: absolute;
             border-radius: 50%;
-            background: rgba(237, 214, 188, 0.03);
-            border: 1px solid rgba(237, 214, 188, 0.08);
+            background-size: cover;
+            background-position: center;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-color);
             animation: float infinite linear;
-            backdrop-filter: blur(2px);
+            opacity: 0.25; /* Transparence pour ne pas gêner la lecture */
         }
 
-        .shape:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 15%; animation-duration: 25s; }
-        .shape:nth-child(2) { width: 500px; height: 500px; top: 50%; left: 70%; animation-duration: 35s; animation-direction: reverse; }
-        .shape:nth-child(3) { width: 150px; height: 150px; top: 70%; left: 20%; animation-duration: 20s; }
-        .shape:nth-child(4) { width: 200px; height: 200px; top: -5%; left: 60%; animation-duration: 30s; }
-        .shape:nth-child(5) { width: 80px; height: 80px; top: 40%; left: 45%; animation-duration: 15s; animation-direction: reverse; }
+        /* ICI TU PEUX CHANGER LES NOMS DES IMAGES (skin1.png, etc.) */
+        .shape:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 15%; animation-duration: 25s; background-image: url('skin1.png'); }
+        .shape:nth-child(2) { width: 500px; height: 500px; top: 50%; left: 70%; animation-duration: 35s; animation-direction: reverse; background-image: url('skin2.png'); }
+        .shape:nth-child(3) { width: 150px; height: 150px; top: 70%; left: 20%; animation-duration: 20s; background-image: url('skin3.png'); }
+        .shape:nth-child(4) { width: 200px; height: 200px; top: -5%; left: 60%; animation-duration: 30s; background-image: url('skin4.png'); }
+        .shape:nth-child(5) { width: 80px; height: 80px; top: 40%; left: 45%; animation-duration: 15s; animation-direction: reverse; background-image: url('skin5.png'); }
 
         @keyframes float {
-            0% { transform: translateY(0px) translateX(0px) scale(1); }
-            33% { transform: translateY(-30px) translateX(20px) scale(1.05); }
-            66% { transform: translateY(20px) translateX(-20px) scale(0.95); }
-            100% { transform: translateY(0px) translateX(0px) scale(1); }
+            0% { transform: translateY(0px) translateX(0px) scale(1) rotate(0deg); }
+            33% { transform: translateY(-30px) translateX(20px) scale(1.05) rotate(10deg); }
+            66% { transform: translateY(20px) translateX(-20px) scale(0.95) rotate(-10deg); }
+            100% { transform: translateY(0px) translateX(0px) scale(1) rotate(0deg); }
         }
 
         /* --- BARRE DE NAVIGATION SUPÉRIEURE --- */
@@ -67,7 +105,8 @@
             border-radius: 15px;
             display: flex;
             gap: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
             z-index: 100;
             width: auto;
             max-width: 95%;
@@ -90,9 +129,43 @@
             background: var(--accent-color);
             color: #000;
             border-radius: 8px;
+            box-shadow: 0 0 10px var(--accent-color);
         }
 
-        .nav-item:hover:not(.active) { color: white; }
+        .nav-item:hover:not(.active) { color: #fff; text-shadow: 0 0 5px var(--accent-color); }
+
+        /* --- FLÈCHES ANIMÉES MACRO --- */
+        .macro-link {
+            position: relative;
+            overflow: visible;
+        }
+
+        .arrows-container {
+            position: absolute;
+            top: 100%; 
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px; 
+            margin-top: 10px;
+            pointer-events: none; 
+        }
+
+        .arrow-icon {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            text-shadow: var(--neon-glow);
+            animation: bounce-arrows 0.6s infinite alternate ease-in-out;
+        }
+
+        .arrow-left { --rot: 35deg; animation-delay: 0s; }
+        .arrow-center { --rot: 0deg; animation-delay: 0.15s; }
+        .arrow-right { --rot: -35deg; animation-delay: 0.3s; }
+
+        @keyframes bounce-arrows {
+            0% { transform: translateY(5px) rotate(var(--rot)); }
+            100% { transform: translateY(-5px) rotate(var(--rot)); }
+        }
 
         /* --- LOGO À GAUCHE --- */
         .brand-logo {
@@ -105,9 +178,12 @@
             font-weight: 900;
             font-style: italic;
             font-size: 1.2rem;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color), inset 0 0 5px var(--accent-color);
             z-index: 101;
             letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 0 5px var(--accent-color);
             backdrop-filter: blur(5px);
         }
 
@@ -127,8 +203,8 @@
         }
 
         .discord-btn-center {
-            background: var(--panel-bg);
-            color: var(--accent-color);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
             border: 2px solid var(--accent-color);
             padding: 15px 40px;
             border-radius: 15px;
@@ -140,7 +216,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 0 15px var(--accent-color), inset 0 0 10px rgba(0, 255, 255, 0.2);
+            text-shadow: 0 0 5px var(--accent-color);
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
@@ -149,7 +226,8 @@
             background: var(--accent-color);
             color: #000;
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(237, 214, 188, 0.3);
+            box-shadow: var(--neon-glow);
+            text-shadow: none;
         }
 
         .stats-container {
@@ -162,41 +240,37 @@
 
         .stat-box {
             background: var(--panel-bg);
-            border: 1px solid var(--accent-color);
+            border: 1px solid rgba(0, 255, 255, 0.3);
             padding: 20px 30px;
             border-radius: 15px;
             text-align: center;
             backdrop-filter: blur(5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
+            transition: all 0.3s;
             flex: 1;
         }
 
-        .stat-box:hover {
-            transform: translateY(-5px);
+        .stat-box:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
         }
 
-        .stat-number {
-            display: block;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--accent-color);
-            margin-bottom: 5px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        .stat-number { 
+            display: block; 
+            font-size: 2.5rem; 
+            font-weight: 900; 
+            color: #fff; 
+            margin-bottom: 5px; 
+            text-shadow: var(--neon-glow); 
         }
-
-        .stat-text {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: #ccc;
-            font-weight: 700;
-        }
+        
+        .stat-text { font-size: 0.8rem; letter-spacing: 2px; color: #ccc; font-weight: 700; }
 
         /* --- MODAL / OVERLAY --- */
         .overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.9);
             display: none;
             justify-content: center;
             align-items: center;
@@ -208,8 +282,8 @@
         .overlay.active { display: flex; }
 
         .modal-content {
-            background: #F7EBDD;
-            color: #141311;
+            background: #111;
+            color: #fff;
             padding: 40px;
             border-radius: 20px;
             width: 100%;
@@ -217,88 +291,73 @@
             text-align: center;
             max-height: 90vh;
             overflow-y: auto;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
         }
 
-        .modal-content h2 { margin-bottom: 20px; font-size: 2rem; letter-spacing: 2px; }
-        .modal-content p { line-height: 1.6; margin-bottom: 15px; }
+        .modal-content h2 { 
+            margin-bottom: 20px; 
+            font-size: 2rem; 
+            letter-spacing: 2px; 
+            color: #fff;
+            text-shadow: 0 0 10px var(--accent-color);
+        }
+        
+        .modal-content p { line-height: 1.6; margin-bottom: 15px; color: #ccc; }
 
         .close-modal {
             margin-top: 20px;
-            background: #141311;
-            color: white;
+            background: var(--accent-color);
+            color: #000;
             padding: 12px 20px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 900;
             width: 100%;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
+            box-shadow: 0 0 10px var(--accent-color);
         }
 
-        .close-modal:hover { background: #333; }
+        .close-modal:hover { 
+            background: #fff; 
+            box-shadow: 0 0 20px #fff; 
+        }
 
         /* --- BOUTONS SOCIAUX (SUB TO UNLOCK) --- */
         .social-lock-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: #1a1a1a;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 15px;
+            background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: 0.3s; cursor: pointer;
         }
-
-        .social-lock-btn:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
+        .social-lock-btn:hover { 
+            border-color: var(--accent-color); 
+            box-shadow: 0 0 10px var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
         }
-
-        /* Classe quand le bouton a été cliqué */
-        .social-lock-btn.clicked {
-            background: rgba(46, 204, 113, 0.15);
-            border-color: #2ecc71;
-            color: #2ecc71;
-        }
+        .social-lock-btn.clicked { background: rgba(46, 204, 113, 0.15); border-color: #2ecc71; color: #2ecc71; box-shadow: 0 0 10px #2ecc71; text-shadow: none; }
 
         .download-btn {
-            display: inline-block;
-            background: #1a1a1a;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-weight: 900;
-            text-decoration: none;
-            margin-top: 15px;
-            transition: 0.3s;
-            font-size: 1.1rem;
+            display: inline-block; background: transparent; color: #fff; border: 2px solid var(--accent-color);
+            padding: 15px 30px; border-radius: 10px; font-weight: 900; text-decoration: none; margin-top: 15px; transition: 0.3s; font-size: 1.1rem;
+            box-shadow: inset 0 0 10px rgba(0,255,255,0.2);
+            text-shadow: 0 0 5px var(--accent-color);
         }
-
-        .download-btn:hover {
-            background: var(--accent-color);
-            color: #000;
-            transform: scale(1.05);
-        }
+        .download-btn:hover { background: var(--accent-color); color: #000; transform: scale(1.05); box-shadow: var(--neon-glow); text-shadow: none; }
 
         /* --- CARROUSEL --- */
         .carousel-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; width: 100%; }
-        .nav-arrow { background: transparent; border: none; color: var(--accent-color); font-size: 2.5rem; cursor: pointer; transition: 0.2s; padding: 10px; }
-        .nav-arrow:hover { transform: scale(1.2); color: #fff; }
-        .member-card { background: #1a1a1a; border: 2px solid var(--accent-color); border-radius: 15px; padding: 20px; margin-top: 20px; flex-grow: 1; max-width: 320px; }
-        .member-photo { width: 100%; max-width: 250px; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
-        .chef-title { font-family: 'Georgia', serif; color: var(--accent-color); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 3px; margin-top: 15px; font-weight: 900; }
-        .member-count { margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 700; }
+        .nav-arrow { background: transparent; border: none; color: var(--accent-color); font-size: 2.5rem; cursor: pointer; transition: 0.2s; padding: 10px; text-shadow: 0 0 10px var(--accent-color); }
+        .nav-arrow:hover { transform: scale(1.2); color: #fff; text-shadow: 0 0 15px #fff; }
+        .member-card { background: #000; border: 1px solid var(--accent-color); border-radius: 15px; padding: 20px; margin-top: 20px; flex-grow: 1; max-width: 320px; box-shadow: 0 0 15px rgba(0,255,255,0.1); }
+        .member-photo { width: 100%; max-width: 250px; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(0, 255, 255, 0.3); }
+        .chef-title { font-family: 'Georgia', serif; color: var(--accent-color); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 3px; margin-top: 15px; font-weight: 900; text-shadow: 0 0 5px var(--accent-color); }
+        .member-count { margin-top: 15px; font-size: 0.8rem; color: #aaa; font-weight: 700; }
 
         @media (max-width: 768px) {
+            .loader-title { font-size: 2.5rem; }
             .brand-logo { position: relative; top: auto; left: auto; margin: 20px auto; display: table; text-align: center; }
             .top-nav { top: 85px; padding: 5px 10px; gap: 5px; }
             .nav-item { font-size: 0.6rem; padding: 8px 10px; }
@@ -313,6 +372,10 @@
 </head>
 <body>
 
+    <div id="loader">
+        <div class="loader-title">THE HUNS</div>
+    </div>
+
     <div class="bg-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -325,7 +388,16 @@
 
     <nav class="top-nav">
         <a href="#" class="nav-item active">Intro</a>
-        <a href="javascript:void(0)" onclick="toggleMacro()" class="nav-item">Macro</a>
+        
+        <a href="javascript:void(0)" onclick="toggleMacro()" class="nav-item macro-link">
+            Macro
+            <div class="arrows-container">
+                <i class="fa-solid fa-arrow-up arrow-icon arrow-left"></i>
+                <i class="fa-solid fa-arrow-up arrow-icon arrow-center"></i>
+                <i class="fa-solid fa-arrow-up arrow-icon arrow-right"></i>
+            </div>
+        </a>
+
         <a href="javascript:void(0)" onclick="toggleModal()" class="nav-item">À propos</a>
         <a href="javascript:void(0)" onclick="toggleMembres()" class="nav-item">Membres</a>
     </nav>
@@ -353,27 +425,27 @@
     <div id="infoModal" class="overlay">
         <div class="modal-content">
             <h2>À PROPOS</h2>
-            <p>Nous ne sommes pas simplement une équipe, nous sommes l’élite. Dominer le leaderboard n’est pas un objectif pour nous, c’est une routine.</p>
-            <p><strong>Synergie + Force</strong><br>Nous utilisons <strong>+</strong> comme symbole de notre union et de notre puissance collective. Là où les autres se divisent, nous nous additionnons pour écraser la concurrence.</p>
+            <p>Bienvenue chez THE HUNS, le clan compétitif #1 sur Agar.io.
+
+Notre force repose sur une équipe soudée et des joueurs d'élite très actifs. Notre objectif est simple : jouer en équipe, écraser les serveurs et dominer le classement en permanence.</p>
+
             <button class="close-modal" onclick="toggleModal()">FERMER</button>
         </div>
     </div>
 
     <div id="macroModal" class="overlay">
-        <div class="modal-content" style="background: #141311; color: white;">
+        <div class="modal-content">
             <h2 style="color: var(--accent-color);">MACRO OFFICIELLE</h2>
             
             <div id="lockScreen">
                 <p>Pour accéder à la configuration Macro, tu dois soutenir le clan !</p>
                 <div style="display: flex; flex-direction: column; gap: 15px; margin: 25px 0;">
-                    
                     <a href="https://www.tiktok.com/@the_huns1?_r=1&_t=ZN-95jTfspSHxu" target="_blank" class="social-lock-btn" onclick="checkUnlock('tiktok', event)">
                         <i class="fa-brands fa-tiktok"></i> S'abonner sur TikTok
                     </a>
                     <a href="https://www.instagram.com/th_clans1?igsh=MWVubTQ2bHdzazFibw==" target="_blank" class="social-lock-btn" onclick="checkUnlock('insta', event)">
                         <i class="fa-brands fa-instagram"></i> Suivre sur Instagram
                     </a>
-
                 </div>
                 <p id="unlockMessage" style="color: #ff4444; font-size: 0.85rem; font-weight: bold;">
                     <i class="fa-solid fa-lock"></i> Clique sur les deux liens pour débloquer la vidéo.
@@ -387,18 +459,15 @@
                 <div style="margin: 20px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--accent-color);">
                     <video src="macro.mp4" width="100%" controls style="border-radius: 10px;"></video>
                 </div>
-
-                <a href="#" class="download-btn">
-                    <i class="fa-solid fa-download"></i> TÉLÉCHARGER
                 </a>
             </div>
 
-            <button class="close-modal" onclick="toggleMacro()" style="background: #edd6bc; color: #000; margin-top: 25px;">FERMER</button>
+            <button class="close-modal" onclick="toggleMacro()" style="background: var(--accent-color); color: #000; margin-top: 25px;">FERMER</button>
         </div>
     </div>
 
     <div id="membresModal" class="overlay">
-        <div class="modal-content" style="background: #141311; color: white;">
+        <div class="modal-content">
             <h2>STAFF DU CLAN</h2>
             <div class="carousel-wrapper">
                 <button class="nav-arrow" onclick="changerMembre(-1)"><i class="fa-solid fa-chevron-left"></i></button>
@@ -406,15 +475,25 @@
                     <img id="affichagePhoto" src="Ferhat.png" alt="Membre" class="member-photo">
                     <h3 id="affichageNom" style="margin-top:15px; font-size: 1.5rem;">Ferhat</h3>
                     <p id="affichageRole" class="chef-title">CHEF DU CLAN</p>
-                    <div id="affichageCompteur" class="member-count">1 + 4</div>
+                    <div id="affichageCompteur" class="member-count">1 + 6</div>
                 </div>
                 <button class="nav-arrow" onclick="changerMembre(1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
-            <button class="close-modal" onclick="toggleMembres()" style="background: #edd6bc; color: #000;">FERMER</button>
+            <button class="close-modal" onclick="toggleMembres()">FERMER</button>
         </div>
     </div>
 
     <script>
+        /* =========================================
+           GESTION DE L'ÉCRAN DE CHARGEMENT
+           ========================================= */
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('loader-hidden');
+            }, 1500);
+        });
+
+        /* --- MODALS --- */
         function toggleModal() { document.getElementById('infoModal').classList.toggle('active'); }
         function toggleMembres() { document.getElementById('membresModal').classList.toggle('active'); }
 
@@ -432,7 +511,6 @@
         let instaClicked = false;
 
         function checkUnlock(platform, event) {
-            // Modifie le bouton visuellement
             event.currentTarget.classList.add('clicked');
             
             if (platform === 'tiktok') {
@@ -444,12 +522,11 @@
                 event.currentTarget.innerHTML = '<i class="fa-solid fa-check"></i> Insta Vérifié';
             }
 
-            // Si les deux sont cliqués, on débloque !
             if (tiktokClicked && instaClicked) {
                 document.getElementById('unlockMessage').style.color = '#2ecc71';
+                document.getElementById('unlockMessage').style.textShadow = '0 0 5px #2ecc71';
                 document.getElementById('unlockMessage').innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Déblocage en cours...';
                 
-                // Petit délai d'1 seconde pour faire "pro"
                 setTimeout(() => {
                     document.getElementById('lockScreen').style.display = 'none';
                     document.getElementById('hiddenMacroContent').style.display = 'block';
@@ -461,8 +538,10 @@
         const membresDuClan = [
             { nom: "Ferhat", role: "CHEF DU CLAN", photo: "Ferhat.png" },
             { nom: "sahaj95", role: "2ND CHEF DU CLAN", photo: "sahaj95.png" },
+            { nom: "Keyser Soze ⵣ", role: "SUPREMATIE", photo: "Odin.png" },
+            { nom: "AKU", role: "SUPREMATIE", photo: "Aku.png" },
             { nom: "RTW", role: "MAIN OWNER", photo: "RTW.png" },
-            { nom: "TROXI", role: "SOUMIS", photo: "Troxi.png" }
+            { nom: "Srx.ioo", role: "GESTION STAFF", photo: "Srx.png" },
         ];
 
         let indexActuel = 0;
