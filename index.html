@@ -52,7 +52,6 @@
         }
 
         :root {
-            /* L'animation fait tourner la couleur sur 10 secondes */
             animation: rgbGaming 10s linear infinite;
             --neon-glow: 0 0 5px var(--accent-color), 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
             --dark-bg: rgba(10, 10, 12, 0.9);
@@ -70,6 +69,9 @@
             position: relative;
         }
 
+        /* =========================================
+           🎥 CINÉMATIQUE D'INTRODUCTION (YEUX + TEXTE + FUMÉE)
+           ========================================= */
         #loader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -79,23 +81,111 @@
             justify-content: center;
             align-items: center;
             transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+            overflow: hidden;
         }
 
+        /* Le conteneur qui avance vers l'écran */
+        .intro-cinematic {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            z-index: 2;
+            animation: cinematic-rush 3.5s forwards;
+        }
+
+        @keyframes cinematic-rush {
+            0% { transform: scale(0.3); opacity: 0; }
+            15% { transform: scale(1); opacity: 1; filter: blur(0px); }
+            65% { transform: scale(1.1); opacity: 1; filter: blur(0px); }
+            75% { transform: scale(6); opacity: 0; filter: blur(10px); } /* Fonce dans la caméra */
+            100% { transform: scale(6); opacity: 0; }
+        }
+
+        /* Les Yeux */
+        .eyes-container {
+            display: flex;
+            gap: 60px;
+        }
+
+        .eye {
+            width: 80px;
+            height: 0px; 
+            background: #fff;
+            box-shadow: 0 0 20px var(--accent-color), 0 0 40px var(--accent-color);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Pupille */
+        .eye::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 25px;
+            height: 25px;
+            background: #000;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .eye.left { animation: eye-open 3.5s forwards; }
+        .eye.right { animation: eye-wink 3.5s forwards; }
+
+        @keyframes eye-open {
+            0%, 15% { height: 2px; }
+            25%, 65% { height: 35px; } /* Ouvre */
+            70%, 100% { height: 2px; }
+        }
+
+        @keyframes eye-wink {
+            0%, 15% { height: 2px; }
+            25%, 35% { height: 35px; } /* Ouvre */
+            40%, 45% { height: 2px; } /* Clin d'oeil ! */
+            50%, 65% { height: 35px; } /* Rouvre */
+            70%, 100% { height: 2px; }
+        }
+
+        /* Le Texte THE HUNS de l'intro */
         .loader-title {
-            font-size: 4rem;
+            font-size: 5rem;
             font-style: italic;
             font-weight: 900;
+            letter-spacing: 12px;
             color: #fff;
-            letter-spacing: 8px;
-            animation: pulse-neon 1.5s infinite alternate;
+            text-shadow: var(--neon-glow);
+            text-transform: uppercase;
         }
 
-        @keyframes pulse-neon {
-            0% { transform: scale(1); text-shadow: 0 0 10px var(--accent-color); }
-            100% { transform: scale(1.05); text-shadow: var(--neon-glow); }
+        /* L'explosion de brouillard */
+        .fog-explosion {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            filter: blur(80px);
+            opacity: 0;
+            z-index: 3;
+            animation: smoke-bomb 3.5s forwards;
+        }
+
+        @keyframes smoke-bomb {
+            0%, 68% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            75% { transform: translate(-50%, -50%) scale(15); opacity: 1; }
+            95% { transform: translate(-50%, -50%) scale(25); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(25); opacity: 0; }
         }
 
         .loader-hidden { opacity: 0; visibility: hidden; }
+
+        /* ========================================= */
 
         .bg-shapes {
             position: absolute;
@@ -169,12 +259,11 @@
 
         .nav-item:hover:not(.active) { color: #fff; text-shadow: 0 0 5px var(--accent-color); }
 
-        /* --- LE BOUTON MACRO BRILLANT EN BLANC EST ICI --- */
         .macro-link { 
             position: relative; 
             overflow: visible; 
-            color: #fff !important; /* Force le texte en blanc */
-            text-shadow: 0 0 5px #fff, 0 0 15px #fff, 0 0 25px #fff !important; /* Brillance blanche fixe */
+            color: #fff !important; 
+            text-shadow: 0 0 5px #fff, 0 0 15px #fff, 0 0 25px #fff !important; 
             font-weight: 900;
             letter-spacing: 1px;
         }
@@ -217,13 +306,28 @@
             font-style: italic;
             font-size: 1.2rem;
             border: 1px solid var(--accent-color);
-            box-shadow: 0 0 10px var(--accent-color), inset 0 0 5px var(--accent-color);
             z-index: 101;
             letter-spacing: 1px;
             color: #fff;
             text-shadow: 0 0 5px var(--accent-color);
             backdrop-filter: blur(5px);
             margin: 0;
+            transition: all 0.2s ease;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); box-shadow: 0 0 10px var(--accent-color), inset 0 0 5px var(--accent-color); }
+            50% { transform: scale(1.05); box-shadow: 0 0 25px var(--accent-color), inset 0 0 10px var(--accent-color); }
+            100% { transform: scale(1); box-shadow: 0 0 10px var(--accent-color), inset 0 0 5px var(--accent-color); }
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.1) skewX(-10deg);
+            letter-spacing: 4px;
+            color: var(--accent-color);
+            text-shadow: 0 0 20px var(--accent-color);
+            animation: none;
         }
 
         .center-wrapper {
@@ -374,7 +478,7 @@
 
         .download-btn {
             display: inline-block; background: transparent; color: #fff; border: 2px solid var(--accent-color);
-            padding: 15px 30px; border-radius: 10px; font-weight: 900; text-decoration: none; margin-top: 15px; transition: 0.3s; font-size: 1.1rem;
+            padding: 15px 30px; border-radius: 10px; font-weight: 900; text-decoration: none; transition: 0.3s; font-size: 1.1rem;
             box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
             text-shadow: 0 0 5px var(--accent-color);
         }
@@ -412,7 +516,14 @@
 <body>
 
     <div id="loader">
-        <div class="loader-title">THE HUNS</div>
+        <div class="fog-explosion"></div>
+        <div class="intro-cinematic">
+            <div class="eyes-container">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+            </div>
+            <div class="loader-title">THE HUNS</div>
+        </div>
     </div>
 
     <div class="bg-shapes">
@@ -491,7 +602,16 @@
                 <div style="margin: 20px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--accent-color);">
                     <video src="macro.mp4" width="100%" controls style="border-radius: 10px;"></video>
                 </div>
-                </a>
+                
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="https://khoindvn.io.vn/" target="_blank" class="download-btn">
+                        <i class="fa-solid fa-globe"></i> INSTALL DNS
+                    </a>
+                   <a href="https://qx4.dev/" target="_blank" class="download-btn">
+                        <i class="fa-solid fa-globe"></i> INSTALL SHARKMOD
+                    </a>
+                </div>
+
             </div>
             <button class="close-modal" onclick="toggleMacro()" style="background: var(--accent-color); color: #000; margin-top: 25px;">FERMER</button>
         </div>
@@ -513,11 +633,14 @@
             <button class="close-modal" onclick="toggleMembres()">FERMER</button>
         </div>
     </div>
+
+   
     <script>
         window.addEventListener('load', () => {
+            // L'animation de foncer + explosion dure 3.5s
             setTimeout(() => {
                 document.getElementById('loader').classList.add('loader-hidden');
-            }, 1500);
+            }, 3500); 
         });
 
         function toggleModal() { document.getElementById('infoModal').classList.toggle('active'); }
