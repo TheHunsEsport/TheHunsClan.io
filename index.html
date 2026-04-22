@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE HUNS | Le Meilleur Clan Agar.io</title>
-    <meta name="description" content="Rejoignez THE HUNS, le clan #1 mondial sur Agar.io. Équipe très active, synergie totale, recrutement ouvert. Dominez le leaderboard avec nous !">
-    <meta name="keywords" content="clan agario, team agario, THE HUNS, recrutement agario, meilleur clan agar.io, jeu io, macro agario">
+    <title>THE HUNS | #1 Clan Agar.io & Macro Sharkmod</title>
+    <meta name="description" content="Rejoins THE HUNS, le meilleur clan Agar.io au monde. Recrutement ouvert, équipe active, et accès exclusif à la configuration Macro Sharkmod officielle.">
+    <meta name="keywords" content="clan agario, macro sharkmod, lien macro sharkmod, team agario, recrutement clan agario, THE HUNS, telecharger macro agario, agario clan">
+    
+    <meta property="og:title" content="THE HUNS | Clan Agar.io & Macro Sharkmod">
+    <meta property="og:description" content="Rejoignez le clan Agar.io #1. Recrutement ouvert et lien pour configurer la Macro Sharkmod.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pamuk2006.github.io/TheHunsClan.io">
+    <meta property="og:image" content="Ferhat.png"> 
+    <meta name="theme-color" content="#00ffff"> <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsTeam",
+      "name": "THE HUNS",
+      "sport": "Esports - Agar.io",
+      "description": "Le clan compétitif #1 mondial sur le jeu Agar.io. Accès exclusif à la macro Sharkmod.",
+      "url": "https://pamuk2006.github.io/TheHunsClan.io"
+    }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -77,10 +93,9 @@
             border: 2px solid var(--accent-color);
             box-shadow: 0 0 20px var(--accent-color);
             animation: float infinite linear;
-            opacity: 0.25; /* Transparence pour ne pas gêner la lecture */
+            opacity: 0.25; 
         }
 
-        /* ICI TU PEUX CHANGER LES NOMS DES IMAGES (skin1.png, etc.) */
         .shape:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 15%; animation-duration: 25s; background-image: url('skin1.png'); }
         .shape:nth-child(2) { width: 500px; height: 500px; top: 50%; left: 70%; animation-duration: 35s; animation-direction: reverse; background-image: url('skin2.png'); }
         .shape:nth-child(3) { width: 150px; height: 150px; top: 70%; left: 20%; animation-duration: 20s; background-image: url('skin3.png'); }
@@ -167,7 +182,7 @@
             100% { transform: translateY(-5px) rotate(var(--rot)); }
         }
 
-        /* --- LOGO À GAUCHE --- */
+        /* --- LOGO À GAUCHE (Transformé en H1 pour le SEO) --- */
         .brand-logo {
             position: fixed;
             top: 20px;
@@ -185,6 +200,7 @@
             color: #fff;
             text-shadow: 0 0 5px var(--accent-color);
             backdrop-filter: blur(5px);
+            margin: 0; 
         }
 
         /* --- CONTENU CENTRAL --- */
@@ -352,7 +368,10 @@
         .nav-arrow { background: transparent; border: none; color: var(--accent-color); font-size: 2.5rem; cursor: pointer; transition: 0.2s; padding: 10px; text-shadow: 0 0 10px var(--accent-color); }
         .nav-arrow:hover { transform: scale(1.2); color: #fff; text-shadow: 0 0 15px #fff; }
         .member-card { background: #000; border: 1px solid var(--accent-color); border-radius: 15px; padding: 20px; margin-top: 20px; flex-grow: 1; max-width: 320px; box-shadow: 0 0 15px rgba(0,255,255,0.1); }
-        .member-photo { width: 100%; max-width: 250px; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(0, 255, 255, 0.3); }
+        
+        /* Correction de la taille de l'image ici */
+        .member-photo { width: 100%; max-width: 250px; height: 150px; object-fit: contain; background: #1a1a1a; border-radius: 10px; border: 1px solid rgba(0, 255, 255, 0.3); }
+        
         .chef-title { font-family: 'Georgia', serif; color: var(--accent-color); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 3px; margin-top: 15px; font-weight: 900; text-shadow: 0 0 5px var(--accent-color); }
         .member-count { margin-top: 15px; font-size: 0.8rem; color: #aaa; font-weight: 700; }
 
@@ -384,7 +403,7 @@
         <div class="shape"></div>
     </div>
 
-    <div class="brand-logo">THE HUNS</div>
+    <h1 class="brand-logo">THE HUNS</h1>
 
     <nav class="top-nav">
         <a href="#" class="nav-item active">Intro</a>
@@ -425,20 +444,18 @@
     <div id="infoModal" class="overlay">
         <div class="modal-content">
             <h2>À PROPOS</h2>
-            <p>Bienvenue chez THE HUNS, le clan compétitif #1 sur Agar.io.
-
-Notre force repose sur une équipe soudée et des joueurs d'élite très actifs. Notre objectif est simple : jouer en équipe, écraser les serveurs et dominer le classement en permanence.</p>
-
+            <p>Bienvenue chez THE HUNS, le clan compétitif #1 sur Agar.io.</p>
+            <p>Notre force repose sur une équipe soudée et des joueurs d'élite très actifs. Notre objectif est simple : jouer en équipe, écraser les serveurs et dominer le classement en permanence.</p>
             <button class="close-modal" onclick="toggleModal()">FERMER</button>
         </div>
     </div>
 
     <div id="macroModal" class="overlay">
         <div class="modal-content">
-            <h2 style="color: var(--accent-color);">MACRO OFFICIELLE</h2>
+            <h2 style="color: var(--accent-color);">MACRO SHARKMOD OFFICIELLE</h2>
             
             <div id="lockScreen">
-                <p>Pour accéder à la configuration Macro, tu dois soutenir le clan !</p>
+                <p>Pour obtenir le lien de la Macro Sharkmod, tu dois soutenir le clan !</p>
                 <div style="display: flex; flex-direction: column; gap: 15px; margin: 25px 0;">
                     <a href="https://www.tiktok.com/@the_huns1?_r=1&_t=ZN-95jTfspSHxu" target="_blank" class="social-lock-btn" onclick="checkUnlock('tiktok', event)">
                         <i class="fa-brands fa-tiktok"></i> S'abonner sur TikTok
@@ -454,7 +471,7 @@ Notre force repose sur une équipe soudée et des joueurs d'élite très actifs.
 
             <div id="hiddenMacroContent" style="display: none;">
                 <p style="color: #2ecc71; font-weight: bold;"><i class="fa-solid fa-unlock"></i> Accès débloqué !</p>
-                <p>Démonstration de notre configuration Macro privée (Éjection de masse & trick splits).</p>
+                <p>Voici le lien pour avoir la macro Sharkmod et notre configuration privée (Éjection de masse & trick splits).</p>
                 
                 <div style="margin: 20px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--accent-color);">
                     <video src="macro.mp4" width="100%" controls style="border-radius: 10px;"></video>
@@ -472,15 +489,19 @@ Notre force repose sur une équipe soudée et des joueurs d'élite très actifs.
             <div class="carousel-wrapper">
                 <button class="nav-arrow" onclick="changerMembre(-1)"><i class="fa-solid fa-chevron-left"></i></button>
                 <div class="member-card">
-                    <img id="affichagePhoto" src="Ferhat.png" alt="Membre" class="member-photo">
+                    <img id="affichagePhoto" src="Ferhat.png" alt="Membre du clan THE HUNS" class="member-photo">
                     <h3 id="affichageNom" style="margin-top:15px; font-size: 1.5rem;">Ferhat</h3>
                     <p id="affichageRole" class="chef-title">CHEF DU CLAN</p>
-                    <div id="affichageCompteur" class="member-count">1 + 6</div>
+                    <div id="affichageCompteur" class="member-count">1 + 12</div>
                 </div>
                 <button class="nav-arrow" onclick="changerMembre(1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
             <button class="close-modal" onclick="toggleMembres()">FERMER</button>
         </div>
+    </div>
+
+    <div style="position: fixed; bottom: 10px; right: 10px; z-index: 100;">
+        <img src="https://api.visitorbadge.io/api/visitors?path=pamuk2006.github.io.thehuns&label=VISITES&countColor=%2300ffff&labelStyle=upper" alt="Compteur de visites">
     </div>
 
     <script>
