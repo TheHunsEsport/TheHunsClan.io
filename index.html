@@ -1,724 +1,622 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta name="google-site-verification" content="SYvKdIXaxDtgbYtGfPwiodyF6n5t9muiLi-z_GppCsY" />
-    
-    <link rel="icon" href="TH.png">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE HUNS | #1 Clan Agar.io & Macro Sharkmod</title>
-    <meta name="description" content="Rejoins THE HUNS, le meilleur clan Agar.io au monde. Recrutement ouvert, équipe active, et accès exclusif à la configuration Macro Sharkmod officielle.">
-    <meta name="keywords" content="clan agario, macro sharkmod, lien macro sharkmod, team agario, recrutement clan agario, THE HUNS, telecharger macro agario, agario clan">
-    
-    <meta property="og:title" content="THE HUNS | Clan Agar.io & Macro Sharkmod">
-    <meta property="og:description" content="Rejoignez le clan Agar.io #1. Recrutement ouvert et lien pour configurer la Macro Sharkmod.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pamuk2006.github.io/TheHunsClan.io">
-    <meta property="og:image" content="Ferhat.png"> 
-    <meta name="theme-color" content="#ffffff">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SportsTeam",
-      "name": "THE HUNS",
-      "sport": "Esports - Agar.io",
-      "description": "Le clan compétitif #1 mondial sur le jeu Agar.io. Accès exclusif à la macro Sharkmod.",
-      "url": "https://pamuk2006.github.io/TheHunsClan.io"
-    }
-    </script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>THE HUNS | Clan Agar.io #1</title>
+    <meta name="description" content="THE HUNS — Le clan Agar.io #1 mondial. Recrutement ouvert, Macro Sharkmod exclusive.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* =========================================
-           🌟 MOTEUR RGB GAMING ANIMÉ
-           ========================================= */
-        @property --accent-color {
-            syntax: '<color>';
-            inherits: true;
-            initial-value: #ff0055;
-        }
-
-        @keyframes rgbGaming {
-            0%   { --accent-color: #ff0055; }
-            15%  { --accent-color: #aa00ff; }
-            30%  { --accent-color: #0055ff; }
-            45%  { --accent-color: #00ffff; }
-            60%  { --accent-color: #00ff55; }
-            75%  { --accent-color: #ffff00; }
-            90%  { --accent-color: #ff5500; }
-            100% { --accent-color: #ff0055; }
-        }
-
         :root {
-            animation: rgbGaming 10s linear infinite;
-            --neon-glow: 0 0 5px var(--accent-color), 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
-            --dark-bg: rgba(10, 10, 12, 0.9);
-            --panel-bg: rgba(0, 0, 0, 0.85);
+            --red: #ff0033;
+            --gold: #ffd700;
+            --dark: #050508;
+            --panel: rgba(5,5,10,0.92);
+            --glow-red: 0 0 8px #ff0033, 0 0 25px #ff003388, 0 0 60px #ff003333;
+            --glow-gold: 0 0 8px #ffd700, 0 0 25px #ffd70088;
+            --border: 1px solid rgba(255,0,51,0.35);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
-            font-family: 'Inter', sans-serif;
-            height: 100vh;
-            overflow: hidden;
-            color: white;
-            position: relative;
+            background: var(--dark);
+            font-family: 'Rajdhani', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            cursor: none;
         }
 
-        /* =========================================
-           🎥 CINÉMATIQUE D'INTRODUCTION (YEUX + TEXTE + FUMÉE)
-           ========================================= */
-        #loader {
+        .cursor {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #050505; 
-            z-index: 9999; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
-            overflow: hidden;
+            width: 12px; height: 12px;
+            background: var(--red);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+            box-shadow: var(--glow-red);
+        }
+        .cursor-ring {
+            position: fixed;
+            width: 36px; height: 36px;
+            border: 1.5px solid rgba(255,0,51,0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
         }
 
-        /* Le conteneur qui avance vers l'écran */
-        .intro-cinematic {
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.035;
+            pointer-events: none;
+            z-index: 9000;
+        }
+
+        #loader {
+            position: fixed; inset: 0;
+            background: #000;
+            z-index: 9999;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 20px;
-            z-index: 2;
-            animation: cinematic-rush 3.5s forwards;
+            gap: 0;
+            transition: opacity 0.7s ease, visibility 0.7s ease;
         }
+        #loader.hidden { opacity: 0; visibility: hidden; }
 
-        @keyframes cinematic-rush {
-            0% { transform: scale(0.3); opacity: 0; }
-            15% { transform: scale(1); opacity: 1; filter: blur(0px); }
-            65% { transform: scale(1.1); opacity: 1; filter: blur(0px); }
-            75% { transform: scale(6); opacity: 0; filter: blur(10px); } /* Fonce dans la caméra */
-            100% { transform: scale(6); opacity: 0; }
+        .loader-clan {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 15vw, 12rem);
+            letter-spacing: 0.15em;
+            color: #fff;
+            text-shadow: var(--glow-red);
+            animation: loader-in 1s cubic-bezier(0.23,1,0.32,1) forwards;
+            opacity: 0;
+            transform: scaleX(0.3);
         }
-
-        /* Les Yeux */
-        .eyes-container {
-            display: flex;
-            gap: 60px;
+        .loader-sub {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(0.6rem, 2vw, 1rem);
+            letter-spacing: 0.6em;
+            color: var(--gold);
+            text-shadow: var(--glow-gold);
+            animation: loader-in 1s 0.3s cubic-bezier(0.23,1,0.32,1) forwards;
+            opacity: 0;
+            transform: scaleX(0.3);
         }
-
-        .eye {
-            width: 80px;
-            height: 0px; 
-            background: #fff;
-            box-shadow: 0 0 20px var(--accent-color), 0 0 40px var(--accent-color);
-            border-radius: 50%;
-            position: relative;
+        .loader-bar-wrap {
+            margin-top: 50px;
+            width: min(350px, 70vw);
+            height: 2px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 2px;
             overflow: hidden;
         }
+        .loader-bar {
+            height: 100%;
+            background: var(--red);
+            box-shadow: 0 0 10px var(--red);
+            width: 0%;
+            animation: load-progress 2.5s ease forwards;
+        }
+        @keyframes load-progress { 0%{width:0%} 60%{width:85%} 100%{width:100%} }
+        @keyframes loader-in { to { opacity: 1; transform: scaleX(1); } }
 
-        /* Pupille */
-        .eye::after {
+        .loader-flash {
+            position: absolute; inset: 0;
+            background: var(--red);
+            opacity: 0;
+            animation: flash-out 0.4s 2.9s ease forwards;
+        }
+        @keyframes flash-out { 0%{opacity:1} 100%{opacity:0} }
+
+        .bg-scene { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+        .bg-grid {
+            position: absolute; inset: -50%;
+            background-image:
+                linear-gradient(rgba(255,0,51,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,0,51,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: grid-drift 20s linear infinite;
+        }
+        @keyframes grid-drift {
+            from { transform: translateY(0) perspective(500px) rotateX(20deg); }
+            to { transform: translateY(60px) perspective(500px) rotateX(20deg); }
+        }
+        .bg-glow-1 {
+            position: absolute;
+            width: 800px; height: 800px;
+            top: -200px; left: -200px;
+            background: radial-gradient(circle, rgba(255,0,51,0.12) 0%, transparent 70%);
+            animation: orb-move 15s ease-in-out infinite alternate;
+        }
+        .bg-glow-2 {
+            position: absolute;
+            width: 600px; height: 600px;
+            bottom: -100px; right: -100px;
+            background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 70%);
+            animation: orb-move 18s ease-in-out infinite alternate-reverse;
+        }
+        @keyframes orb-move { from{transform:translate(0,0)} to{transform:translate(80px,60px)} }
+
+        header {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            height: 70px;
+            background: linear-gradient(180deg, rgba(5,5,8,0.98) 0%, rgba(5,5,8,0) 100%);
+            border-bottom: 1px solid rgba(255,0,51,0.15);
+        }
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.15em;
+            color: #fff;
+            text-shadow: var(--glow-red);
+            position: relative;
+            text-decoration: none;
+        }
+        .logo span { color: var(--red); }
+        .logo::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 25px;
-            height: 25px;
-            background: #000;
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-color);
+            bottom: -4px; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--red), transparent);
         }
 
-        .eye.left { animation: eye-open 3.5s forwards; }
-        .eye.right { animation: eye-wink 3.5s forwards; }
-
-        @keyframes eye-open {
-            0%, 15% { height: 2px; }
-            25%, 65% { height: 35px; } /* Ouvre */
-            70%, 100% { height: 2px; }
-        }
-
-        @keyframes eye-wink {
-            0%, 15% { height: 2px; }
-            25%, 35% { height: 35px; } /* Ouvre */
-            40%, 45% { height: 2px; } /* Clin d'oeil ! */
-            50%, 65% { height: 35px; } /* Rouvre */
-            70%, 100% { height: 2px; }
-        }
-
-        /* Le Texte THE HUNS de l'intro */
-        .loader-title {
-            font-size: 5rem;
-            font-style: italic;
-            font-weight: 900;
-            letter-spacing: 12px;
-            color: #fff;
-            text-shadow: var(--neon-glow);
-            text-transform: uppercase;
-        }
-
-        /* L'explosion de brouillard */
-        .fog-explosion {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            filter: blur(80px);
-            opacity: 0;
-            z-index: 3;
-            animation: smoke-bomb 3.5s forwards;
-        }
-
-        @keyframes smoke-bomb {
-            0%, 68% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-            75% { transform: translate(-50%, -50%) scale(15); opacity: 1; }
-            95% { transform: translate(-50%, -50%) scale(25); opacity: 0; }
-            100% { transform: translate(-50%, -50%) scale(25); opacity: 0; }
-        }
-
-        .loader-hidden { opacity: 0; visibility: hidden; }
-
-        /* ========================================= */
-
-        .bg-shapes {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: center;
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 0 20px var(--accent-color);
-            animation: float infinite linear;
-            opacity: 0.15;
-        }
-
-        .shape:nth-child(1) { width: 400px; height: 400px; top: 10%; left: 10%; animation-duration: 25s; background-image: url('skin1.png'); }
-        .shape:nth-child(2) { width: 600px; height: 600px; top: 50%; left: 70%; animation-duration: 35s; animation-direction: reverse; background-image: url('skin2.png'); }
-        .shape:nth-child(3) { width: 250px; height: 250px; top: 70%; left: 20%; animation-duration: 20s; background-image: url('skin3.png'); }
-        .shape:nth-child(4) { width: 200px; height: 200px; top: -5%; left: 50%; animation-duration: 30s; background-image: url('skin4.png'); }
-        .shape:nth-child(5) { width: 120px; height: 120px; top: 40%; left: 45%; animation-duration: 15s; animation-direction: reverse; background-image: url('skin5.png'); }
-
-        @keyframes float {
-            0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-            33% { transform: translateY(-30px) translateX(20px) rotate(10deg); }
-            66% { transform: translateY(20px) translateX(-20px) rotate(-10deg); }
-            100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-        }
-
-        .top-nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--panel-bg);
-            padding: 10px 30px;
-            border-radius: 15px;
+        nav {
             display: flex;
-            gap: 20px;
-            border: 1px solid var(--accent-color);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            z-index: 100;
-            width: auto;
-            max-width: 95%;
-            backdrop-filter: blur(5px);
-            transition: border-color 0.1s;
+            gap: 4px;
+            background: rgba(0,0,0,0.5);
+            border: var(--border);
+            border-radius: 10px;
+            padding: 5px;
+            backdrop-filter: blur(10px);
         }
-
-        .nav-item {
-            text-decoration: none;
-            color: #ccc;
-            font-weight: 700;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            padding: 8px 15px;
-            transition: 0.3s;
+        .nav-btn {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.5);
+            padding: 8px 16px;
+            border-radius: 7px;
             cursor: pointer;
-            white-space: nowrap;
+            transition: all 0.2s;
+            border: none;
+            background: none;
+            text-transform: uppercase;
         }
-
-        .nav-item.active {
-            background: var(--accent-color);
-            color: #000;
-            border-radius: 8px;
-            box-shadow: 0 0 10px var(--accent-color);
-        }
-
-        .nav-item:hover:not(.active) { color: #fff; text-shadow: 0 0 5px var(--accent-color); }
-
-        .macro-link { 
-            position: relative; 
-            overflow: visible; 
-            color: #fff !important; 
-            text-shadow: 0 0 5px #fff, 0 0 15px #fff, 0 0 25px #fff !important; 
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        .arrows-container {
-            position: absolute;
-            top: 100%; 
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px; 
-            margin-top: 10px;
-            pointer-events: none; 
-        }
-
-        .arrow-icon {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            text-shadow: var(--neon-glow);
-            animation: bounce-arrows 0.6s infinite alternate ease-in-out;
-        }
-
-        .arrow-left { --rot: 35deg; animation-delay: 0s; }
-        .arrow-center { --rot: 0deg; animation-delay: 0.15s; }
-        .arrow-right { --rot: -35deg; animation-delay: 0.3s; }
-
-        @keyframes bounce-arrows {
-            0% { transform: translateY(5px) rotate(var(--rot)); }
-            100% { transform: translateY(-5px) rotate(var(--rot)); }
-        }
-
-        .brand-logo {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--panel-bg);
-            padding: 12px 25px;
-            border-radius: 15px;
-            font-weight: 900;
-            font-style: italic;
-            font-size: 1.2rem;
-            border: 1px solid var(--accent-color);
-            z-index: 101;
-            letter-spacing: 1px;
+        .nav-btn:hover, .nav-btn.active {
             color: #fff;
-            text-shadow: 0 0 5px var(--accent-color);
-            backdrop-filter: blur(5px);
-            margin: 0;
-            transition: all 0.2s ease;
-            animation: heartbeat 2s infinite;
+            background: rgba(255,0,51,0.15);
+            text-shadow: 0 0 8px var(--red);
         }
-
-        @keyframes heartbeat {
-            0% { transform: scale(1); box-shadow: 0 0 10px var(--accent-color), inset 0 0 5px var(--accent-color); }
-            50% { transform: scale(1.05); box-shadow: 0 0 25px var(--accent-color), inset 0 0 10px var(--accent-color); }
-            100% { transform: scale(1); box-shadow: 0 0 10px var(--accent-color), inset 0 0 5px var(--accent-color); }
+        .nav-btn.macro-btn {
+            color: var(--gold);
+            text-shadow: var(--glow-gold);
+            position: relative;
         }
-
-        .brand-logo:hover {
-            transform: scale(1.1) skewX(-10deg);
-            letter-spacing: 4px;
-            color: var(--accent-color);
-            text-shadow: 0 0 20px var(--accent-color);
-            animation: none;
-        }
-
-        .center-wrapper {
+        .nav-btn.macro-btn::after {
+            content: '★';
             position: absolute;
-            top: 55%; 
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: -6px; right: -4px;
+            font-size: 0.5rem;
+            color: var(--gold);
+            animation: pulse-star 1.5s infinite;
+        }
+        @keyframes pulse-star { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+        .hero {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 40px; 
-            width: 100%;
-            max-width: 800px;
-            z-index: 50;
-        }
-
-        .discord-btn-center {
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            border: 2px solid var(--accent-color);
-            padding: 15px 40px;
-            border-radius: 15px;
-            font-size: 1.2rem;
-            font-weight: 900;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 0 15px var(--accent-color), inset 0 0 10px rgba(0, 0, 0, 0.2);
-            text-shadow: 0 0 5px var(--accent-color);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .discord-btn-center:hover {
-            background: var(--accent-color);
-            color: #000;
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-            text-shadow: none;
-        }
-
-        .stats-container {
-            display: flex;
-            gap: 30px;
-            width: 100%;
-            justify-content: center;
-            padding: 0 20px;
-        }
-
-        .stat-box {
-            background: var(--panel-bg);
-            border: 1px solid var(--accent-color);
-            padding: 20px 30px;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s;
-            flex: 1;
-        }
-
-        .stat-box:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 0 15px var(--accent-color);
-        }
-
-        .stat-number { 
-            display: block; 
-            font-size: 2.5rem; 
-            font-weight: 900; 
-            color: #fff; 
-            margin-bottom: 5px; 
-            text-shadow: var(--neon-glow); 
-        }
-        
-        .stat-text { font-size: 0.8rem; letter-spacing: 2px; color: #ccc; font-weight: 700; }
-
-        .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            display: none;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            padding: 20px;
-        }
-
-        .overlay.active { display: flex; }
-
-        .modal-content {
-            background: #111;
-            color: #fff;
-            padding: 40px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 600px;
             text-align: center;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid var(--accent-color);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 100px 20px 60px;
+        }
+        .hero-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.5em;
+            color: var(--red);
+            text-shadow: 0 0 10px var(--red);
+            margin-bottom: 20px;
+            animation: fade-up 0.8s 0.5s both;
+        }
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(5rem, 18vw, 16rem);
+            line-height: 0.88;
+            letter-spacing: 0.05em;
+            position: relative;
+            animation: fade-up 0.8s 0.7s both;
+        }
+        .hero-title .line1 { display: block; color: #fff; text-shadow: 0 0 40px rgba(255,0,51,0.3); }
+        .hero-title .line2 { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,0.2); }
+        .hero-title::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+            color: var(--red);
+            clip-path: inset(40% 0 50% 0);
+            animation: glitch-anim 4s infinite;
+            opacity: 0;
+            pointer-events: none;
+        }
+        @keyframes glitch-anim {
+            0%,95%,100%{opacity:0;clip-path:inset(40% 0 50% 0)}
+            96%{opacity:0.5;clip-path:inset(10% 0 80% 0);transform:translate(-4px,0)}
+            97%{opacity:0.5;clip-path:inset(60% 0 20% 0);transform:translate(4px,0)}
+            98%{opacity:0.3;clip-path:inset(30% 0 55% 0);transform:translate(-2px,0)}
+            99%{opacity:0}
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.4);
+            max-width: 500px;
+            margin: 24px auto 40px;
+            line-height: 1.7;
+            animation: fade-up 0.8s 0.9s both;
+        }
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fade-up 0.8s 1.1s both;
+        }
+        @keyframes fade-up { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+        .btn-primary {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: #000; background: var(--red);
+            border: none; padding: 16px 32px; border-radius: 6px;
+            cursor: pointer; text-decoration: none; font-weight: 700;
+            transition: all 0.25s;
+            box-shadow: 0 4px 25px rgba(255,0,51,0.4);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(255,0,51,0.6); }
+
+        .btn-ghost {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: rgba(255,255,255,0.7); background: transparent;
+            border: var(--border); padding: 16px 32px; border-radius: 6px;
+            cursor: pointer; text-decoration: none; transition: all 0.25s;
+        }
+        .btn-ghost:hover { color: #fff; border-color: var(--red); box-shadow: 0 0 20px rgba(255,0,51,0.2); transform: translateY(-3px); }
+
+        .scroll-indicator {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.4;
+        }
+        .scroll-indicator span { font-family: 'Orbitron', sans-serif; font-size: 0.5rem; letter-spacing: 0.3em; color: rgba(255,255,255,0.5); }
+        .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, rgba(255,0,51,0.8), transparent); animation: scroll-anim 1.5s ease-in-out infinite; }
+        @keyframes scroll-anim {
+            0%{transform:scaleY(0);transform-origin:top}
+            50%{transform:scaleY(1);transform-origin:top}
+            51%{transform:scaleY(1);transform-origin:bottom}
+            100%{transform:scaleY(0);transform-origin:bottom}
         }
 
-        .modal-content h2 { 
-            margin-bottom: 20px; 
-            font-size: 2rem; 
-            letter-spacing: 2px; 
-            color: #fff;
-            text-shadow: 0 0 10px var(--accent-color);
+        .stats-row {
+            position: relative; z-index: 10;
+            display: flex; justify-content: center;
+            margin: 0 auto; max-width: 900px; width: 90%;
+            border: var(--border); border-radius: 12px;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(15px);
+            overflow: hidden; animation: fade-up 0.8s 1.3s both;
         }
-        
-        .modal-content p { line-height: 1.6; margin-bottom: 15px; color: #ccc; }
-
-        .close-modal {
-            margin-top: 20px;
-            background: var(--accent-color);
-            color: #000;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 900;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            box-shadow: 0 0 10px var(--accent-color);
+        .stat-item {
+            flex: 1; text-align: center; padding: 28px 20px;
+            border-right: 1px solid rgba(255,0,51,0.15);
+            transition: background 0.3s;
         }
-
-        .close-modal:hover { background: #fff; box-shadow: 0 0 20px #fff; }
-
-        .social-lock-btn {
-            display: flex; align-items: center; justify-content: center; gap: 15px;
-            background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--accent-color);
-            padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: 0.3s; cursor: pointer;
+        .stat-item:last-child { border-right: none; }
+        .stat-item:hover { background: rgba(255,0,51,0.05); }
+        .stat-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem; color: #fff; display: block; line-height: 1;
+            text-shadow: 0 0 20px rgba(255,0,51,0.5);
         }
-        
-        .social-lock-btn:hover { 
-            box-shadow: 0 0 10px var(--accent-color);
-            text-shadow: 0 0 5px var(--accent-color);
+        .stat-label { font-family: 'Orbitron', sans-serif; font-size: 0.55rem; letter-spacing: 0.25em; color: rgba(255,255,255,0.35); margin-top: 6px; display: block; }
+        .stat-dot { width: 6px; height: 6px; background: #00ff88; border-radius: 50%; display: inline-block; margin-bottom: 2px; box-shadow: 0 0 8px #00ff88; animation: blink 2s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+        section { position: relative; z-index: 10; padding: 100px 40px; max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            font-family: 'Orbitron', sans-serif; font-size: 0.65rem; letter-spacing: 0.5em;
+            color: var(--red); text-transform: uppercase;
+            display: flex; align-items: center; gap: 15px; margin-bottom: 16px;
         }
+        .section-label::before { content:''; width:30px; height:1px; background:var(--red); box-shadow:0 0 8px var(--red); }
+        .section-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.5rem,6vw,5rem); letter-spacing:0.05em; line-height:1; margin-bottom:50px; }
 
-        .social-lock-btn.clicked { background: rgba(46, 204, 113, 0.15); border-color: #2ecc71; color: #2ecc71; box-shadow: 0 0 10px #2ecc71; text-shadow: none; }
-
-        .download-btn {
-            display: inline-block; background: transparent; color: #fff; border: 2px solid var(--accent-color);
-            padding: 15px 30px; border-radius: 10px; font-weight: 900; text-decoration: none; transition: 0.3s; font-size: 1.1rem;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
-            text-shadow: 0 0 5px var(--accent-color);
+        .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .member-card {
+            background: rgba(0,0,0,0.6); border: var(--border); border-radius: 12px;
+            padding: 24px 20px; text-align: center; transition: all 0.3s;
+            position: relative; overflow: hidden; cursor: default;
         }
-        
-        .download-btn:hover { background: var(--accent-color); color: #000; transform: scale(1.05); box-shadow: var(--neon-glow); text-shadow: none; }
+        .member-card::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:1px;
+            background: linear-gradient(90deg, transparent, var(--red), transparent);
+            opacity:0; transition:opacity 0.3s;
+        }
+        .member-card:hover { transform:translateY(-6px); border-color:rgba(255,0,51,0.5); box-shadow:0 20px 60px rgba(255,0,51,0.1); }
+        .member-card:hover::before { opacity:1; }
+        .member-card.chef { border-color:rgba(255,215,0,0.4); }
+        .member-card.chef:hover { border-color:rgba(255,215,0,0.7); box-shadow:0 20px 60px rgba(255,215,0,0.1); }
+        .member-card.chef::before { background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+        .member-avatar { width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,0,51,0.3); margin:0 auto 14px; display:block; background:rgba(255,0,51,0.05); }
+        .member-card.chef .member-avatar { border-color:rgba(255,215,0,0.5); }
+        .member-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; letter-spacing:0.05em; color:#fff; margin-bottom:6px; }
+        .member-role { font-family:'Orbitron',sans-serif; font-size:0.5rem; letter-spacing:0.2em; padding:4px 10px; border-radius:4px; display:inline-block; background:rgba(255,0,51,0.1); border:1px solid rgba(255,0,51,0.25); color:var(--red); }
+        .member-card.chef .member-role { background:rgba(255,215,0,0.1); border-color:rgba(255,215,0,0.3); color:var(--gold); }
 
-        .carousel-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; width: 100%; }
-        
-        .nav-arrow { background: transparent; border: none; color: var(--accent-color); font-size: 2.5rem; cursor: pointer; transition: 0.2s; padding: 10px; text-shadow: 0 0 10px var(--accent-color); }
-        
-        .nav-arrow:hover { transform: scale(1.2); color: #fff; text-shadow: 0 0 15px #fff; }
-        
-        .member-card { background: #000; border: 1px solid var(--accent-color); border-radius: 15px; padding: 20px; margin-top: 20px; flex-grow: 1; max-width: 320px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
-        
-        .member-photo { width: 100%; max-width: 250px; height: 150px; object-fit: contain; background: #1a1a1a; border-radius: 10px; border: 1px solid var(--accent-color); }
-        
-        .chef-title { font-family: 'Georgia', serif; color: var(--accent-color); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 3px; margin-top: 15px; font-weight: 900; text-shadow: 0 0 5px var(--accent-color); }
-        
-        .member-count { margin-top: 15px; font-size: 0.8rem; color: #aaa; font-weight: 700; }
+        .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:2000; display:none; justify-content:center; align-items:center; padding:20px; backdrop-filter:blur(20px); }
+        .overlay.active { display:flex; }
+        .modal {
+            background: #0a0a0f; border: var(--border); border-radius:16px;
+            padding:40px; width:100%; max-width:560px; max-height:90vh;
+            overflow-y:auto; position:relative; box-shadow:0 0 80px rgba(255,0,51,0.15);
+        }
+        .modal::before { content:''; position:absolute; top:0; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,var(--red),transparent); }
+        .modal h2 { font-family:'Bebas Neue',sans-serif; font-size:2.4rem; letter-spacing:0.1em; margin-bottom:8px; }
+        .modal p { color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:12px; font-size:1rem; }
+        .modal-close {
+            position:absolute; top:20px; right:20px;
+            background:rgba(255,0,51,0.1); border:var(--border); color:rgba(255,255,255,0.5);
+            width:36px; height:36px; border-radius:6px; cursor:pointer;
+            display:flex; align-items:center; justify-content:center; font-size:0.9rem; transition:all 0.2s;
+        }
+        .modal-close:hover { background:var(--red); color:#fff; }
+
+        .lock-screen { display:flex; flex-direction:column; gap:12px; margin:24px 0; }
+        .social-btn {
+            display:flex; align-items:center; gap:14px; padding:16px 20px;
+            background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
+            border-radius:10px; color:rgba(255,255,255,0.7);
+            font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1rem;
+            text-decoration:none; cursor:pointer; transition:all 0.25s;
+        }
+        .social-btn:hover { border-color:rgba(255,0,51,0.4); background:rgba(255,0,51,0.05); color:#fff; }
+        .social-btn.done { border-color:rgba(0,255,136,0.4); background:rgba(0,255,136,0.05); color:#00ff88; }
+        .social-btn i { font-size:1.3rem; }
+        .unlock-msg { display:flex; align-items:center; gap:8px; font-family:'Orbitron',sans-serif; font-size:0.6rem; letter-spacing:0.1em; color:rgba(255,255,255,0.3); padding:12px 16px; border:1px solid rgba(255,255,255,0.06); border-radius:8px; background:rgba(255,255,255,0.02); }
+
+        .video-wrap { border-radius:10px; overflow:hidden; border:var(--border); margin:20px 0; }
+        .video-wrap video { width:100%; display:block; }
+        .download-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px; }
+        .dl-btn { display:flex; align-items:center; justify-content:center; gap:8px; padding:14px; background:rgba(255,0,51,0.06); border:var(--border); border-radius:8px; color:rgba(255,255,255,0.7); font-family:'Orbitron',sans-serif; font-size:0.55rem; letter-spacing:0.1em; text-decoration:none; transition:all 0.25s; }
+        .dl-btn:hover { background:var(--red); color:#000; border-color:var(--red); }
+
+        footer { position:relative; z-index:10; border-top:1px solid rgba(255,0,51,0.1); padding:40px; text-align:center; font-family:'Orbitron',sans-serif; font-size:0.55rem; letter-spacing:0.3em; color:rgba(255,255,255,0.15); }
 
         @media (max-width: 768px) {
-            .loader-title { font-size: 2.5rem; }
-            .brand-logo { position: relative; top: auto; left: auto; margin: 20px auto; display: table; text-align: center; }
-            .top-nav { top: 85px; padding: 5px 10px; gap: 5px; }
-            .nav-item { font-size: 0.6rem; padding: 8px 10px; }
-            .modal-content { padding: 25px 20px; }
-            .center-wrapper { top: 55%; gap: 25px; }
-            .discord-btn-center { font-size: 1rem; padding: 12px 30px; }
-            .stats-container { flex-direction: column; gap: 15px; }
-            .stat-box { padding: 15px; }
-            .nav-arrow { font-size: 1.8rem; padding: 5px; }
+            header { padding: 0 20px; }
+            .nav-btn { font-size:0.55rem; padding:7px 10px; }
+            section { padding: 60px 20px; }
+            .stats-row { flex-direction:column; }
+            .stat-item { border-right:none; border-bottom:1px solid rgba(255,0,51,0.1); }
+            .stat-item:last-child { border-bottom:none; }
+            .modal { padding:28px 20px; }
+            .download-grid { grid-template-columns:1fr; }
         }
     </style>
 </head>
 <body>
 
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
     <div id="loader">
-        <div class="fog-explosion"></div>
-        <div class="intro-cinematic">
-            <div class="eyes-container">
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-            </div>
-            <div class="loader-title">THE HUNS</div>
+        <div class="loader-flash"></div>
+        <div class="loader-clan">THE HUNS</div>
+        <div class="loader-sub">Clan Agar.io · #1 Mondial</div>
+        <div class="loader-bar-wrap">
+            <div class="loader-bar"></div>
         </div>
     </div>
 
-    <div class="bg-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
+    <div class="bg-scene">
+        <div class="bg-grid"></div>
+        <div class="bg-glow-1"></div>
+        <div class="bg-glow-2"></div>
     </div>
 
-    <h1 class="brand-logo">THE HUNS</h1>
+    <header>
+        <a href="#" class="logo">THE<span>HUNS</span></a>
+        <nav>
+            <button class="nav-btn active" onclick="scrollToTop()">Accueil</button>
+            <button class="nav-btn macro-btn" onclick="openModal('macroModal')">Macro</button>
+            <button class="nav-btn" onclick="scrollToSection('about')">À Propos</button>
+            <button class="nav-btn" onclick="scrollToSection('membres')">Membres</button>
+        </nav>
+    </header>
 
-    <nav class="top-nav">
-        <a href="#" class="nav-item active">Intro</a>
-        <a href="javascript:void(0)" onclick="toggleMacro()" class="nav-item macro-link">
-            Macro
-            <div class="arrows-container">
-                <i class="fa-solid fa-arrow-up arrow-icon arrow-left"></i>
-                <i class="fa-solid fa-arrow-up arrow-icon arrow-center"></i>
-                <i class="fa-solid fa-arrow-up arrow-icon arrow-right"></i>
-            </div>
-        </a>
-        <a href="javascript:void(0)" onclick="toggleModal()" class="nav-item">À propos</a>
-        <a href="javascript:void(0)" onclick="toggleMembres()" class="nav-item">Membres</a>
-    </nav>
-
-    <div class="center-wrapper">
-        <a href="https://discord.gg/SAFMmW2s" target="_blank" class="discord-btn-center">
-            <i class="fa-brands fa-discord"></i> REJOINDRE LE DISCORD
-        </a>
-        <div class="stats-container">
-            <div class="stat-box">
-                <span class="stat-number" id="discordCount">1183+</span>
-                <span class="stat-text">MEMBRES TOTAL</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number">#1</span>
-                <span class="stat-text">CLASSEMENT MONDIAL</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number">TRES ACTIF</span>
-                <span class="stat-text">STATUT</span>
-            </div>
+    <div class="hero" id="home">
+        <div class="hero-tag">Clan Compétitif · Agar.io · Sharkmod</div>
+        <h1 class="hero-title" data-text="THE HUNS">
+            <span class="line1">THE</span>
+            <span class="line2">HUNS</span>
+        </h1>
+        <p class="hero-desc">Le clan #1 mondial sur Agar.io. Joueurs d'élite, équipe active, configuration Macro Sharkmod exclusive.</p>
+        <div class="hero-cta-group">
+            <a href="https://discord.gg/SAFMmW2s" target="_blank" class="btn-primary">
+                <i class="fa-brands fa-discord"></i> Rejoindre le Discord
+            </a>
+            <button class="btn-ghost" onclick="openModal('macroModal')">
+                <i class="fa-solid fa-gear"></i> Obtenir la Macro
+            </button>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Défiler</span>
         </div>
     </div>
 
-    <div id="infoModal" class="overlay">
-        <div class="modal-content">
-            <h2>À PROPOS</h2>
-            <p>Bienvenue chez THE HUNS, le clan compétitif #1 sur Agar.io.</p>
-            <p>Notre force repose sur une équipe soudée et des joueurs d'élite très actifs. Notre objectif est simple : jouer en équipe, écraser les serveurs et dominer le classement en permanence.</p>
-            <button class="close-modal" onclick="toggleModal()">FERMER</button>
+    <div class="stats-row">
+        <div class="stat-item">
+            <span class="stat-value" id="memberCount">1183+</span>
+            <span class="stat-label">Membres Discord</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value">#1</span>
+            <span class="stat-label">Classement Mondial</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value"><span class="stat-dot"></span> ON</span>
+            <span class="stat-label">Statut — Très Actif</span>
+        </div>
         </div>
     </div>
 
-    <div id="macroModal" class="overlay">
-        <div class="modal-content">
-            <h2 style="color: var(--accent-color);">MACRO SHARKMOD OFFICIELLE</h2>
+    <section id="about">
+        <div class="section-label">À Propos</div>
+        <h2 class="section-title">QUI SOMMES<br>NOUS ?</h2>
+        <p style="color:rgba(255,255,255,0.5);line-height:1.9;font-size:1.1rem;max-width:650px;">
+            THE HUNS est le clan compétitif #1 mondial sur Agar.io. Notre force repose sur une équipe soudée et des joueurs d'élite constamment actifs. Notre objectif est simple : écraser les serveurs, dominer les classements, et progresser ensemble.<br><br>
+            On offre également un accès exclusif à notre configuration Macro Sharkmod privée.
+        </p>
+    </section>
+
+    <section id="membres">
+        <div class="section-label">Équipe</div>
+        <h2 class="section-title">STAFF<br>DU CLAN</h2>
+        <div class="members-grid" id="membersGrid"></div>
+    </section>
+
+    <footer>© 2025 THE HUNS · Clan Agar.io #1 Mondial · All Rights Reserved</footer>
+
+    <div class="overlay" id="macroModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('macroModal')"><i class="fa fa-times"></i></button>
+            <h2 style="color:var(--red)">MACRO SHARKMOD</h2>
+            <p>Configuration officielle du clan — Éjection de masse + trick splits.</p>
             <div id="lockScreen">
-                <p>Pour obtenir le lien de la Macro Sharkmod, tu dois soutenir le clan !</p>
-                <div style="display: flex; flex-direction: column; gap: 15px; margin: 25px 0;">
-                    <a href="https://www.tiktok.com/@the_huns1?_r=1&_t=ZN-95jTfspSHxu" target="_blank" class="social-lock-btn" onclick="checkUnlock('tiktok', event)">
+                <p style="margin-bottom:4px;font-size:0.9rem;">Soutiens le clan pour débloquer l'accès :</p>
+                <div class="lock-screen">
+                    <a href="https://www.tiktok.com/@the_huns1" target="_blank" class="social-btn" id="tiktokBtn" onclick="markDone('tiktok', event)">
                         <i class="fa-brands fa-tiktok"></i> S'abonner sur TikTok
                     </a>
-                    <a href="https://www.instagram.com/th_clans1?igsh=MWVubTQ2bHdzazFibw==" target="_blank" class="social-lock-btn" onclick="checkUnlock('insta', event)">
+                    <a href="https://www.instagram.com/th_clans1" target="_blank" class="social-btn" id="instaBtn" onclick="markDone('insta', event)">
                         <i class="fa-brands fa-instagram"></i> Suivre sur Instagram
                     </a>
                 </div>
-                <p id="unlockMessage" style="color: #ff4444; font-size: 0.85rem; font-weight: bold;">
-                    <i class="fa-solid fa-lock"></i> Clique sur les deux liens pour débloquer la vidéo.
-                </p>
-            </div>
-            <div id="hiddenMacroContent" style="display: none;">
-                <p style="color: #2ecc71; font-weight: bold;"><i class="fa-solid fa-unlock"></i> Accès débloqué !</p>
-                <p>Voici le lien pour avoir la macro Sharkmod et notre configuration privée (Éjection de masse + trick splits).</p>
-                <div style="margin: 20px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--accent-color);">
-                    <video src="macro.mp4" width="100%" controls style="border-radius: 10px;"></video>
+                <div class="unlock-msg" id="unlockMsg">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Clique sur les deux liens pour débloquer.</span>
                 </div>
-                
-                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
-                    <a href="https://khoindvn.io.vn/" target="_blank" class="download-btn">
-                        <i class="fa-solid fa-globe"></i> INSTALL DNS
-                    </a>
-                   <a href="https://qx4.dev/" target="_blank" class="download-btn">
-                        <i class="fa-solid fa-globe"></i> INSTALL SHARKMOD
-                    </a>
-                </div>
-
             </div>
-            <button class="close-modal" onclick="toggleMacro()" style="background: var(--accent-color); color: #000; margin-top: 25px;">FERMER</button>
+            <div id="macroContent" style="display:none">
+                <div style="color:#00ff88;display:flex;align-items:center;gap:8px;margin-bottom:16px;font-family:'Orbitron',sans-serif;font-size:0.7rem;letter-spacing:0.1em;">
+                    <i class="fa-solid fa-unlock"></i> Accès débloqué — Bienvenue !
+                </div>
+                <p>Voici notre configuration privée avec la Macro Sharkmod officielle :</p>
+                <div class="video-wrap">
+                    <video src="macro.mp4" controls></video>
+                </div>
+                <div class="download-grid">
+                    <a href="https://khoindvn.io.vn/" target="_blank" class="dl-btn"><i class="fa-solid fa-globe"></i> INSTALL DNS</a>
+                    <a href="https://qx4.dev/" target="_blank" class="dl-btn"><i class="fa-solid fa-globe"></i> INSTALL SHARKMOD</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div id="membresModal" class="overlay">
-        <div class="modal-content">
-            <h2>STAFF DU CLAN</h2>
-            <div class="carousel-wrapper">
-                <button class="nav-arrow" onclick="changerMembre(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                <div class="member-card">
-                    <img id="affichagePhoto" src="Ferhat.png" alt="Membre du clan THE HUNS" class="member-photo">
-                    <h3 id="affichageNom" style="margin-top:15px; font-size: 1.5rem;">Ferhat</h3>
-                    <p id="affichageRole" class="chef-title">CHEF DU CLAN</p>
-                    <div id="affichageCompteur" class="member-count">1 + 12</div>
-                </div>
-                <button class="nav-arrow" onclick="changerMembre(1)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-            <button class="close-modal" onclick="toggleMembres()">FERMER</button>
-        </div>
-    </div>
-
-   
     <script>
-        window.addEventListener('load', () => {
-            // L'animation de foncer + explosion dure 3.5s
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('loader-hidden');
-            }, 3500); 
+        const cursor = document.getElementById('cursor');
+        const ring = document.getElementById('cursorRing');
+        let mx=0,my=0,rx=0,ry=0;
+        document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+        function animRing(){ rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); }
+        animRing();
+        document.querySelectorAll('a,button').forEach(el => {
+            el.addEventListener('mouseenter',()=>{ cursor.style.width='6px'; cursor.style.height='6px'; ring.style.width='50px'; ring.style.height='50px'; });
+            el.addEventListener('mouseleave',()=>{ cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='36px'; ring.style.height='36px'; });
         });
 
-        function toggleModal() { document.getElementById('infoModal').classList.toggle('active'); }
-        function toggleMembres() { document.getElementById('membresModal').classList.toggle('active'); }
+        window.addEventListener('load', () => { setTimeout(()=>{ document.getElementById('loader').classList.add('hidden'); }, 3200); });
 
-        function toggleMacro() {
-            var macroModal = document.getElementById('macroModal');
-            if (macroModal.classList.contains('active')) {
-                var video = macroModal.querySelector('video');
-                if(video) video.pause();
-            }
-            macroModal.classList.toggle('active');
+        function openModal(id){ document.getElementById(id).classList.add('active'); }
+        function closeModal(id){ document.getElementById(id).classList.remove('active'); const v=document.querySelector(`#${id} video`); if(v)v.pause(); }
+        document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{ if(e.target===o)closeModal(o.id); }));
+
+        function scrollToTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
+        function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+        let tt=false,ig=false;
+        function markDone(platform,e){
+            setTimeout(()=>{
+                if(platform==='tiktok'){ tt=true; document.getElementById('tiktokBtn').classList.add('done'); document.getElementById('tiktokBtn').innerHTML='<i class="fa-solid fa-check"></i> TikTok — Abonné ✓'; }
+                if(platform==='insta'){ ig=true; document.getElementById('instaBtn').classList.add('done'); document.getElementById('instaBtn').innerHTML='<i class="fa-solid fa-check"></i> Instagram — Suivi ✓'; }
+                if(tt&&ig){
+                    const msg=document.getElementById('unlockMsg');
+                    msg.style.color='#00ff88';
+                    msg.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> <span>Déblocage en cours…</span>';
+                    setTimeout(()=>{ document.getElementById('lockScreen').style.display='none'; document.getElementById('macroContent').style.display='block'; },1200);
+                }
+            },800);
         }
 
-        let tiktokClicked = false;
-        let instaClicked = false;
-
-        function checkUnlock(platform, event) {
-            event.currentTarget.classList.add('clicked');
-            if (platform === 'tiktok') {
-                tiktokClicked = true;
-                event.currentTarget.innerHTML = '<i class="fa-solid fa-check"></i> TikTok Vérifié';
-            }
-            if (platform === 'insta') {
-                instaClicked = true;
-                event.currentTarget.innerHTML = '<i class="fa-solid fa-check"></i> Insta Vérifié';
-            }
-            if (tiktokClicked && instaClicked) {
-                document.getElementById('unlockMessage').style.color = '#2ecc71';
-                document.getElementById('unlockMessage').style.textShadow = '0 0 5px #2ecc71';
-                document.getElementById('unlockMessage').innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Déblocage en cours...';
-                setTimeout(() => {
-                    document.getElementById('lockScreen').style.display = 'none';
-                    document.getElementById('hiddenMacroContent').style.display = 'block';
-                }, 1000);
-            }
-        }
-
-        const membresDuClan = [
-            { nom: "Ferhat", role: "CHEF DU CLAN", photo: "Ferhat.png" },
-            { nom: "sahaj95", role: "2ND CHEF DU CLAN", photo: "sahaj95.png" },
-            { nom: "Keyser Soze ⵣ", role: "SUPREMATIE", photo: "Odin.png" },
-            { nom: "AKU", role: "SUPREMATIE", photo: "Aku.png" },
-            { nom: "ZELTA", role: "SUPREMATIE", photo: "Zelta.png" },
-            { nom: "RTW", role: "MAIN OWNER", photo: "RTW.png" },
-            { nom: "Srx.ioo", role: "GESTION STAFF", photo: "Srx.png" },
-            { nom: "YSK", role: "Founder", photo: "Ysk.png" },
-            { nom: "SCAR", role: "Founder", photo: "Scar.png" },
-            { nom: "Zams", role: "Co Founder", photo: "Zams.png" },
-            { nom: "Ahmet39z", role: "Co Founder", photo: "Ahmet.png" },
-            { nom: "Davo", role: "Leader", photo: "Davo.png" },
+        const members = [
+            {nom:"Ferhat",role:"CHEF DU CLAN",photo:"Ferhat.png",chef:true},
+            {nom:"sahaj95",role:"2ND CHEF",photo:"sahaj95.png",chef:true},
+            {nom:"Keyser Soze ⵣ",role:"SUPRÉMATIE",photo:"Odin.png"},
+            {nom:"AKU",role:"SUPRÉMATIE",photo:"Aku.png"},
+            {nom:"ZELTA",role:"SUPRÉMATIE",photo:"Zelta.png"},
+            {nom:"RTW",role:"MAIN OWNER",photo:"RTW.png"},
+            {nom:"Srx.ioo",role:"GESTION STAFF",photo:"Srx.png"},
+            {nom:"Zams",role:"FOUNDER",photo:"Zams.png"},
+            {nom:"Ahmet39z",role:"FOUNDER",photo:"Ahmet.png"},
+            {nom:"YSK",role:"CO FOUNDER",photo:"Ysk.png"},
+            {nom:"SCAR",role:"CO FOUNDER",photo:"Scar.png"},
+            {nom:"Davo",role:"LEADER",photo:"Davo.png"},
+            {nom:"Marie",role:"LEADER",photo:"Marie.png"},
         ];
 
-        let indexActuel = 0;
-        function changerMembre(direction) {
-            indexActuel = indexActuel + direction;
-            if (indexActuel >= membresDuClan.length) indexActuel = 0;
-            else if (indexActuel < 0) indexActuel = membresDuClan.length - 1;
+        const grid=document.getElementById('membersGrid');
+        members.forEach(m=>{
+            const card=document.createElement('div');
+            card.className='member-card'+(m.chef?' chef':'');
+            card.innerHTML=`
+                <img src="${m.photo}" alt="${m.nom}" class="member-avatar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 80%22%3E%3Ccircle cx=%2240%22 cy=%2240%22 r=%2240%22 fill=%22%23111%22/%3E%3Ctext x=%2240%22 y=%2247%22 text-anchor=%22middle%22 fill=%22%23ff003344%22 font-size=%2230%22 font-family=%22sans-serif%22%3E${m.nom[0]}%3C/text%3E%3C/svg%3E'">
+                <div class="member-name">${m.nom}</div>
+                <span class="member-role">${m.role}</span>
+            `;
+            grid.appendChild(card);
+        });
 
-            const membre = membresDuClan[indexActuel];
-            document.getElementById('affichageNom').innerText = membre.nom;
-            document.getElementById('affichageRole').innerText = membre.role;
-            document.getElementById('affichagePhoto').src = membre.photo;
-            
-            document.getElementById('affichageCompteur').innerText = (indexActuel + 1) + " + " + membresDuClan.length;
-        }
-        changerMembre(0);
-
-        async function fetchDiscordMembers() {
-            try {
-                const response = await fetch('https://discord.com/api/v9/invites/SAFMmW2s?with_counts=true');
-                const data = await response.json();
-                if (data.approximate_member_count) {
-                    document.getElementById('discordCount').innerText = data.approximate_member_count + '+';
-                }
-            } catch (error) { console.log("Erreur API Discord"); }
-        }
-        fetchDiscordMembers();
+        fetch('https://discord.com/api/v9/invites/SAFMmW2s?with_counts=true')
+            .then(r=>r.json())
+            .then(d=>{ if(d.approximate_member_count) document.getElementById('memberCount').textContent=d.approximate_member_count+'+'; })
+            .catch(()=>{});
     </script>
 </body>
 </html>

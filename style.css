@@ -13,12 +13,15 @@
 }
 
 body, html {
-    height: 100%;
-    width: 100%;
-    background-color: var(--beige-fond);
-    background-image: url("https://www.transparenttextures.com/patterns/felt.png");
-    font-family: 'Inter', -apple-system, sans-serif;
-    overflow-x: hidden; /* Permet le scroll vertical si besoin sur mobile */
+  body {
+    /* Ajoute un dégradé radial subtil : plus sombre sur les bords, légèrement moins sombre au centre */
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+    position: relative;
+}
 }
 
 /* --- MISE EN PAGE PRINCIPALE --- */
